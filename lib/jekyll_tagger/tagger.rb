@@ -8,6 +8,16 @@ module Jekyll_Tagger
     class << self; attr_accessor :main end
     attr_accessor :tags
     #---
+
+    def tag_name(tag)
+      @config.names[tag] || tag
+    end
+
+    def tag_slug(tag)
+      @config.slugs[tag] || tag
+    end
+
+
     def init(site)
       Tagger.main  = self
       @site   = site

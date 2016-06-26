@@ -22,3 +22,13 @@
   dir:     tag_list_4
   before:  build_jekyll
   compare: _site/index.html _test/index.html
+
+- title:   Test tag_name
+  dir:     tag_name
+  before:  build_jekyll
+  compare: _site/index.html _test/index.html
+
+- title:   Test tag_slug
+  dir:     tag_slug
+  before:  build_jekyll
+  compare: _site/index.html _test/index.html

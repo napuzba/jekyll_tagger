@@ -1,0 +1,4 @@
+gems: [jekyll_tagger]
+
+tagger:
+  slugs: { 'bb' : 'tag_bb' , 'dd' : 'tag_dd' , 'ff': 'The_tag_ff'}
