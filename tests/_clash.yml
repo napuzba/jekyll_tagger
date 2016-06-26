@@ -1,0 +1,24 @@
+- tasks:
+    build_jekyll:
+      - cp -r ../_posts .
+      - bundle exec jekyll build --trace
+
+- title:   Test tag_list
+  dir:     tag_list_1
+  before:  build_jekyll
+  compare: _site/index.html _test/index.html
+
+- title:   Test tag_list | include
+  dir:     tag_list_2
+  before:  build_jekyll
+  compare: _site/index.html _test/index.html
+
+- title:   Test tag_list | exclude
+  dir:     tag_list_3
+  before:  build_jekyll
+  compare: _site/index.html _test/index.html
+
+- title:   Test tag_list | exclude + include
+  dir:     tag_list_4
+  before:  build_jekyll
+  compare: _site/index.html _test/index.html

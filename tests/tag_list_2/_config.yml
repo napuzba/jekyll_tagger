@@ -1,0 +1,4 @@
+gems: [jekyll_tagger]
+
+tagger:
+  include: [bb,dd,ff,hh]

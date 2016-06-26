@@ -1,0 +1,5 @@
+gems: [jekyll_tagger]
+
+tagger:
+  include: [bb,dd,ff,hh]
+  exclude: [aa,bb,cc,ff]

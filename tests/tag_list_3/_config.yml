@@ -1,0 +1,4 @@
+gems: [jekyll_tagger]
+
+tagger:
+  exclude: [bb,dd,ff,hh]
