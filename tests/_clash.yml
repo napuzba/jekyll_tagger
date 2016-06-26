@@ -32,3 +32,33 @@
   dir:     tag_slug
   before:  build_jekyll
   compare: _site/index.html _test/index.html
+
+- title:   Test page+feed+pretty
+  dir:     page_01_01
+  before:  build_jekyll
+  compare: _site/tags _test/tags
+
+- title:   Test page+feed+simple
+  dir:     page_01_02
+  before:  build_jekyll
+  compare: _site/tags _test/tags
+
+- title:   Test feed+simple
+  dir:     page_01_03
+  before:  build_jekyll
+  compare: _site/tags _test/tags
+
+- title:   Test page
+  dir:     page_01_04
+  before:  build_jekyll
+  compare: _site/tags _test/tags
+
+- title:   Test folders
+  dir:     page_01_05
+  before:  build_jekyll
+  compare: _site/blog _test/blog
+
+- title:   Test folders
+  dir:     page_01_05
+  before:  build_jekyll
+  compare: _site/blog _test/blog

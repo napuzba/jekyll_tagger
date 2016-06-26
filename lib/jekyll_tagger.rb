@@ -1,5 +1,6 @@
 require 'jekyll_tagger/version.rb'
 require 'jekyll_tagger/config.rb'
+require 'jekyll_tagger/tag_page.rb'
 require 'jekyll_tagger/tagger.rb'
 require 'jekyll_tagger/filters.rb'
 

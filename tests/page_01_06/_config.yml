@@ -1,0 +1,5 @@
+gems:   [jekyll_tagger]
+
+tagger:
+  style: simple
+  folders: { '*' : blog/all , feed: blog/other }

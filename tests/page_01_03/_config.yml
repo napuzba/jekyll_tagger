@@ -1,0 +1,5 @@
+gems:   [jekyll_tagger]
+
+tagger:
+  types: [feed]
+  style: simple

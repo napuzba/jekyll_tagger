@@ -1,0 +1,4 @@
+gems:   [jekyll_tagger]
+
+tagger:
+  folders: { page : blog/tag/pages , feed : blog/tag/feeds }
