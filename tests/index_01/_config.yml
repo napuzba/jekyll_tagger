@@ -1,0 +1,4 @@
+gems:   [jekyll_tagger]
+
+tagger:
+  indexes: ['@']

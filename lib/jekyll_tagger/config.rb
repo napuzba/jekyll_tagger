@@ -1,12 +1,13 @@
 module Jekyll_Tagger
   class Config
     attr_accessor :include , :exclude , :names , :slugs ,
-                  :types, :style , :folders , :layouts
+                  :types, :style , :pretty, :folders , :layouts , :indexes
     def initialize(config)
       @config  = config
 
       @include = value( 'include'       , [] )
       @exclude = value( 'exclude'       , [] )
+      @indexes = value( 'indexes'       , [] )
       @names   = value( 'names'         , {} )
       @slugs   = value( 'slugs'         , {} )
 
@@ -14,6 +15,7 @@ module Jekyll_Tagger
       @style   = value( 'style'         , 'pretty' )
       @layouts = value( 'layouts'       , {} )
       @folders = value( 'folders'       , {} )
+      @pretty  = @style == 'pretty'
     end
 
     def value(key,default)

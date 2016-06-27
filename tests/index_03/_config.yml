@@ -1,0 +1,7 @@
+gems:   [jekyll_tagger]
+
+tagger:
+  style: simple
+  exclude: [aa,ee]
+  indexes: ['@']
+  folders: {'@' : ''}

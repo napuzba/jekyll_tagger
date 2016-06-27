@@ -2,12 +2,16 @@ module Jekyll_Tagger
   class Tagger < Jekyll::Generator
     def generate(site)
       init(site)
+      generate_tags(@tags)
+      generate_tags(@indexes)
+    end
 
+    def generate_tags(tagposts)
       @config.types.each{ |type|
-        @tags.each { |tag,posts|
-          if type == 'feed'
+        tagposts.each{ |tag,posts|
+          if    type == 'feed'
             add_feed(tag,posts)
-          elsif
+          elsif type == 'page'
             add_page(tag,posts)
           end
         }
@@ -15,7 +19,7 @@ module Jekyll_Tagger
     end
     #---
     class << self; attr_accessor :main end
-    attr_accessor :tags
+    attr_accessor :tags, :indexes
     #---
 
     def add_feed(tag,posts)
@@ -53,7 +57,7 @@ module Jekyll_Tagger
     end
 
     def tag_name(tag)
-      @config.names[tag] || tag
+      @config.names[tag] || index_name(tag) || tag
     end
 
     def tag_slug(tag)
@@ -61,10 +65,16 @@ module Jekyll_Tagger
     end
 
     def tag_folder(tag,type)
-      tag_folder = self.tag_base(type)
-      if @config.style == 'pretty'
+      folder = @config.folders[tag]
+      if folder
+        return folder
+      end
+      tag_folder = @config.folders[type] || @config.folders['*' ] || 'tags'
+      if @config.pretty
         tag_slug   = self.tag_slug(tag)
-        tag_folder  = File.join(tag_folder, tag_slug)
+        if tag_slug != '@'
+          tag_folder = File.join(tag_folder, tag_slug)
+        end
       end
       return tag_folder
     end
@@ -72,22 +82,19 @@ module Jekyll_Tagger
     def tag_file(tag,type)
       tag_slug = self.tag_slug(tag)
       if type == 'feed'
-        return @config.style == 'pretty' ? 'feed.xml'   : "#{tag_slug}.xml"
+        return @config.pretty || tag == '@' ? 'feed.xml'   : "#{tag_slug}.xml"
       end
       if type == 'page'
-        return @config.style == 'pretty' ? 'index.html' : "#{tag_slug}.html"
+        return @config.pretty || tag == '@' ? 'index.html' : "#{tag_slug}.html"
       end
-    end
-
-    def tag_base(type)
-      return @config.folders[type] || @config.folders['*' ] || 'tags'
     end
 
     def init(site)
       Tagger.main  = self
       @site   = site
       @config = Config.new( @site.config['tagger'] || {} )
-      @tags = find_tags()
+      @tags    = find_tags()
+      @indexes = find_indexes()
     end
 
     def find_tags()
@@ -99,6 +106,25 @@ module Jekyll_Tagger
         tags.reject! { |tag|     @config.exclude.include? tag  }
       end
       tags
+    end
+    def find_indexes()
+      indexes = {}
+      @config.indexes.each do |index|
+        if index == '@'
+          indexes['@'] = filter_posts( @site.posts.docs.dup , @config.include , @config.exclude )
+        end
+      end
+      indexes
+    end
+
+    def filter_posts(posts,include,exclude)
+      if not include.empty?
+        posts.delete_if { |post| (post.data['tags'] & include).empty? }
+      end
+      if not exclude.empty?
+        posts.keep_if   { |post| (post.data['tags'] & exclude).empty? }
+      end
+      posts
     end
 
     def find_layout(type,tag)
@@ -122,6 +148,15 @@ module Jekyll_Tagger
         Jekyll.logger.warn("Build Warning:", "Layout <#{layout}> is invalid")
       end
       return false
+    end
+
+    def index_name(tag)
+      return nil if tag[0] != '@'
+      return "Recent Posts"
+    end
+
+    def is_index(tag)
+      return tag[0] != '@'
     end
   end
 end

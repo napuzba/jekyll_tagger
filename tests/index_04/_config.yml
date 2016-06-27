@@ -1,0 +1,9 @@
+gems:   [jekyll_tagger]
+
+tagger:
+  style: simple
+  include: [aa,ee]
+  exclude: [cc]
+  indexes: ['@']
+  names  : {'@' : demo }
+  folders: {'@' : demo }

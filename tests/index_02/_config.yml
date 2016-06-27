@@ -1,0 +1,7 @@
+gems:   [jekyll_tagger]
+
+tagger:
+  style: simple
+  include: [aa,ee]
+  names:   {'@':'My Articles'}
+  indexes: ['@']

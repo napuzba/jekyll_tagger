@@ -1,0 +1,3 @@
+I am tag_page for <{{ page.tag}}> <{{ page.tag | tag_slug }}> <{{ page.tag | tag_name }}>
+{% for post in page.posts %}{{ post.title }} {{ post.tags }}
+{% endfor %}

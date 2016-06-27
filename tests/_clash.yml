@@ -87,3 +87,25 @@
   dir:     page_02_02
   before:  build_jekyll
   compare: _site/blog _test/blog
+
+###
+
+- title:   Test index 1
+  dir:     index_01
+  before:  build_jekyll
+  compare: _site/tags _test/tags
+
+- title:   Test index 2
+  dir:     index_02
+  before:  build_jekyll
+  compare: _site/tags _test/tags
+
+- title:   Test index 3
+  dir:     index_03
+  before:  build_jekyll
+  compare: [ _site/index.html _test/index.html, _site/feed.xml _test/feed.xml ]
+
+- title:   Test index 3
+  dir:     index_04
+  before:  build_jekyll
+  compare: _site/demo _test/demo
