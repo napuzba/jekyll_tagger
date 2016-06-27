@@ -1,7 +1,7 @@
 module Jekyll_Tagger
   class Config
     attr_accessor :include , :exclude , :names , :slugs ,
-                  :types, :folder, :style , :folders
+                  :types, :style , :folders , :layouts
     def initialize(config)
       @config  = config
 

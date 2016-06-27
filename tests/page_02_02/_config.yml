@@ -1,0 +1,13 @@
+gems:   [jekyll_tagger]
+
+tagger:
+  style: simple
+  include: [aa,bb,cc,dd]
+  folders:
+    feed:    blog/feed
+    page:    blog/page
+  layouts:
+    '*':     layout_all
+    feed:    layout_feed
+    feed_aa: layout_feed_aa
+    page_bb: layout_page_bb

@@ -102,14 +102,26 @@ module Jekyll_Tagger
     end
 
     def find_layout(type,tag)
-      layout = "tag_#{type}_#{tag}" ; return layout if layout_valid?(layout)
-      layout = "tag_#{type}"        ; return layout if layout_valid?(layout)
-      Jekyll.logger.warn("Build Warning:", "Layout <#{layout}> is invalid")
+      layout = @config.layouts["#{type}_#{tag}"] ; return layout if layout_valid?(layout,true)
+      layout = @config.layouts["#{type}"]        ; return layout if layout_valid?(layout,true)
+      layout = @config.layouts['*']              ; return layout if layout_valid?(layout,true)
+      layout = "tag_#{type}_#{tag}"              ; return layout if layout_valid?(layout)
+      layout = "tag_#{type}"                     ; return layout if layout_valid?(layout,true)
       return false
     end
 
-    def layout_valid?(layout)
-      return @site.layouts[layout]
+    def layout_valid?(layout,warn = false)
+      if layout == nil
+        return false
+      end
+      body = @site.layouts[layout]
+      if body
+        return body
+      end
+      if warn
+        Jekyll.logger.warn("Build Warning:", "Layout <#{layout}> is invalid")
+      end
+      return false
     end
   end
 end

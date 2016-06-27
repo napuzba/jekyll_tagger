@@ -3,10 +3,14 @@
       - cp -r ../_posts .
       - bundle exec jekyll build --trace
 
+###
+
 - title:   Test tag_list
   dir:     tag_list_1
   before:  build_jekyll
   compare: _site/index.html _test/index.html
+
+###
 
 - title:   Test tag_list | include
   dir:     tag_list_2
@@ -22,6 +26,8 @@
   dir:     tag_list_4
   before:  build_jekyll
   compare: _site/index.html _test/index.html
+
+###
 
 - title:   Test tag_name
   dir:     tag_name
@@ -53,12 +59,31 @@
   before:  build_jekyll
   compare: _site/tags _test/tags
 
-- title:   Test folders
+###
+
+- title:   Test folders 1
   dir:     page_01_05
   before:  build_jekyll
   compare: _site/blog _test/blog
 
-- title:   Test folders
-  dir:     page_01_05
+- title:   Test folders 2
+  dir:     page_01_06
+  before:  build_jekyll
+  compare: _site/blog _test/blog
+
+- title:   Test folders 3
+  dir:     page_01_07
+  before:  build_jekyll
+  compare: _site/blog _test/blog
+
+###
+
+- title:   Test layouts 1
+  dir:     page_02_01
+  before:  build_jekyll
+  compare: _site/blog _test/blog
+
+- title:   Test layouts 2
+  dir:     page_02_02
   before:  build_jekyll
   compare: _site/blog _test/blog
