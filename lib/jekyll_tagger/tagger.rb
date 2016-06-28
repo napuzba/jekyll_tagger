@@ -76,15 +76,14 @@ module Jekyll_Tagger
     end
 
     def tag_folder(tag,type,number=1)
-      folder = @config.folders[tag]
-      if folder
-        return folder
-      end
-      tag_folder = @config.folders[type] || @config.folders['*' ] || 'tags'
-      if @config.pretty
-        tag_slug   = self.tag_slug(tag)
-        if tag_slug != '@'
-          tag_folder = File.join(tag_folder, tag_slug)
+      tag_folder = @config.folders[tag]
+      if not tag_folder
+        tag_folder = @config.folders[type] || @config.folders['*' ] || 'tag'
+        if @config.pretty
+          tag_slug   = self.tag_slug(tag)
+          if tag_slug != '@'
+            tag_folder = File.join(tag_folder, tag_slug)
+          end
         end
       end
       if number > 1 && @config.pretty
@@ -99,17 +98,17 @@ module Jekyll_Tagger
         return @config.pretty || tag == "@" ? 'feed.xml'   : "#{tag_slug}.xml"
       end
       if type == 'page'
+        slug = tag_slug
         if tag == "@"
-          tag_slug = 'index'
+          slug = 'index'
         end
         if number == 1
-          name = @config.pretty ? 'index' : tag_slug
+          name = @config.pretty ? 'index' : slug
         else
-          name = @config.pretty ? 'index' : "#{tag_slug}-#{number}"
+          name = @config.pretty ? 'index' : "#{slug}-#{number}"
         end
         return "#{name}.html"
       end
-
     end
 
     def tag_url(tag,type, number = 1)
@@ -146,6 +145,7 @@ module Jekyll_Tagger
       if not @config.exclude.empty?
         tags.reject! { |tag|     @config.exclude.include? tag  }
       end
+      tags.each { |tag,posts|    validate_posts(posts) }
       return tags
     end
 
@@ -166,9 +166,13 @@ module Jekyll_Tagger
       if not exclude.empty?
         posts.keep_if   { |post| (post.data['tags'] & exclude).empty? }
       end
-      posts
+      validate_posts(posts)
+      return posts
     end
 
+    def validate_posts(posts)
+      posts.reject! { |post| post.data['tag_opts'] && post.data['tag_opts'].include?('hide') }
+    end
     def find_layout(tag,type)
       layout = @config.layouts["#{type}_#{tag}"] ; return layout if layout_valid?(layout,true)
       layout = @config.layouts["#{type}"]        ; return layout if layout_valid?(layout,true)

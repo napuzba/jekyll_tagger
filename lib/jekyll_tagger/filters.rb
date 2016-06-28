@@ -18,6 +18,12 @@ module Jekyll_Tagger
       Tagger::main.tag_url(tag,type,number)
     end
 
+    def tag_link_page(tag , html_opts = '')
+      name = tag_name(tag)
+      url  = tag_url(tag,'page')
+      %Q{<a href="#{url}" #{html_opts}>#{name}</a>}
+    end
+
     def pad(ss,size)
       ss.to_s.ljust(size)
     end

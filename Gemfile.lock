@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jekyll-tagger (0.0.1)
+    jekyll_tagger (0.0.2)
 
 GEM
   remote: https://rubygems.org/
@@ -60,7 +60,7 @@ DEPENDENCIES
   bundler (~> 1.6)
   clash
   jekyll
-  jekyll-tagger!
+  jekyll_tagger!
   pry-byebug
   rake
 

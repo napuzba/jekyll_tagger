@@ -10,8 +10,6 @@
   before:  build_jekyll
   compare: _site/index.html _test/index.html
 
-###
-
 - title:   Test tag_list | include
   dir:     tag_list_2
   before:  build_jekyll
@@ -42,22 +40,22 @@
 - title:   Test page+feed+pretty
   dir:     page_01_01
   before:  build_jekyll
-  compare: _site/tags _test/tags
+  compare: _site/tag _test/tag
 
 - title:   Test page+feed+simple
   dir:     page_01_02
   before:  build_jekyll
-  compare: _site/tags _test/tags
+  compare: _site/tag _test/tag
 
 - title:   Test feed+simple
   dir:     page_01_03
   before:  build_jekyll
-  compare: _site/tags _test/tags
+  compare: _site/tag _test/tag
 
 - title:   Test page
   dir:     page_01_04
   before:  build_jekyll
-  compare: _site/tags _test/tags
+  compare: _site/tag _test/tag
 
 ###
 
@@ -93,12 +91,12 @@
 - title:   Test index 1
   dir:     index_01
   before:  build_jekyll
-  compare: _site/tags _test/tags
+  compare: _site/tag _test/tag
 
 - title:   Test index 2
   dir:     index_02
   before:  build_jekyll
-  compare: _site/tags _test/tags
+  compare: _site/tag _test/tag
 
 - title:   Test index 3
   dir:     index_03
@@ -115,7 +113,7 @@
 - title:   Test pager 1
   dir:     pager_01
   before:  build_jekyll
-  compare: _site/tags _test/tags
+  compare: _site/tag _test/tag
 
 - title:   Test pager 2
   dir:     pager_02
