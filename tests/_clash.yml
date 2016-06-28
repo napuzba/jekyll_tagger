@@ -109,3 +109,17 @@
   dir:     index_04
   before:  build_jekyll
   compare: _site/demo _test/demo
+
+###
+
+- title:   Test pager 1
+  dir:     pager_01
+  before:  build_jekyll
+  compare: _site/tags _test/tags
+
+- title:   Test pager 2
+  dir:     pager_02
+  before:
+    - build_jekyll
+    - rm -rf _site/2000
+  compare: _site _test

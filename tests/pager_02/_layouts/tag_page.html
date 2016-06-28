@@ -1,0 +1,10 @@
+I am tag_page for <{{ page.tag}}> <{{ page.tag | tag_slug }}> <{{ page.tag | tag_name }}> <{{page.title}}>
+{% for post in page.posts %}{{ post.title }} {{ post.tags }}
+{% endfor %}
+{% assign pp = page.page_prev  %}{{ pp.number | pad: 5}} | {{ pp.valid | pad: 5}} | {{ pp.selected | pad: 5}} | {{ pp.url }}
+{% assign pp = page.page_next  %}{{ pp.number | pad: 5}} | {{ pp.valid | pad: 5}} | {{ pp.selected | pad: 5}} | {{ pp.url }}
+{% assign pp = page.page_first %}{{ pp.number | pad: 5}} | {{ pp.valid | pad: 5}} | {{ pp.selected | pad: 5}} | {{ pp.url }}
+{% assign pp = page.page_last  %}{{ pp.number | pad: 5}} | {{ pp.valid | pad: 5}} | {{ pp.selected | pad: 5}} | {{ pp.url }}
+
+{% for pp in page.page_list    %}{{ pp.number | pad: 5}} | {{ pp.valid | pad: 5}} | {{ pp.selected | pad: 5}} | {{ pp.url }}
+{% endfor %}

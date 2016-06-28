@@ -1,0 +1,5 @@
+I am tag_feed for <{{ page.tag}}> <{{ page.tag | tag_slug }}> <{{ page.tag | tag_name }}>
+{{ page.tag | tag_url: 'feed' }}
+{{ page.tag | tag_url: 'page' }}
+{% for post in page.posts %}{{ post.title }} - {{ post.tags }}
+{% endfor %}

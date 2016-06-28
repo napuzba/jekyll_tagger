@@ -1,0 +1,7 @@
+gems:   [jekyll_tagger]
+
+tagger:
+  include: ['aa','bb']
+  indexes: ['@']
+  page_size: 4
+  page_show: 5

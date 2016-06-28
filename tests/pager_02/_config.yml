@@ -1,0 +1,9 @@
+gems:   [jekyll_tagger]
+
+tagger:
+  style: simple
+  include: ['aa','bb']
+  indexes: ['@']
+  folders: {'@':''}
+  page_size: 2
+  page_show: 3

@@ -13,5 +13,13 @@ module Jekyll_Tagger
     def tag_slug(tag)
       Tagger::main.tag_slug(tag)
     end
+
+    def tag_url(tag,type,number=1)
+      Tagger::main.tag_url(tag,type,number)
+    end
+
+    def pad(ss,size)
+      ss.to_s.ljust(size)
+    end
   end
 end
