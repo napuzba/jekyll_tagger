@@ -1,6 +1,7 @@
 gems:   [jekyll_tagger]
 
 tagger:
+  post_order: ascending
   style: simple
   include: ['aa','bb']
   indexes: ['@']

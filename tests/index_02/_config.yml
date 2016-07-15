@@ -2,6 +2,7 @@ gems:   [jekyll_tagger]
 
 tagger:
   style: simple
+  post_order: ascending
   include: [aa,ee]
   names:   {'@':'My Articles'}
   indexes: ['@']

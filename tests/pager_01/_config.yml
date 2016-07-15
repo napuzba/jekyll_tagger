@@ -1,6 +1,7 @@
 gems:   [jekyll_tagger]
 
 tagger:
+  post_order: ascending
   include: ['aa','bb']
   indexes: ['@']
   page_size: 4

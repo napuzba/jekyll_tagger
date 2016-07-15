@@ -1,6 +1,6 @@
 module Jekyll_Tagger
   class Config
-    attr_accessor :include , :exclude , :indexes , :names , :slugs , :types, :style , :layouts , :folders , :page_size , :page_show , :pretty
+    attr_accessor :include , :exclude , :indexes , :names , :slugs , :types, :style , :layouts , :folders , :page_size , :page_show , :pretty , :post_order
 
     def initialize(config)
       @config    = config
@@ -15,6 +15,7 @@ module Jekyll_Tagger
       @folders   = value( 'folders'   , {} )
       @page_size = value( 'page_size' , 0  )
       @page_show = value( 'page_show' , 5  )
+      @post_order= value( 'post_order', "descending"  )
       @pretty    = @style == 'pretty'
     end
 

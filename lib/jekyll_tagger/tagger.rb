@@ -172,6 +172,9 @@ module Jekyll_Tagger
 
     def validate_posts(posts)
       posts.reject! { |post| post.data['tag_opts'] && post.data['tag_opts'].include?('hide') }
+      if @config.post_order == 'descending'
+        posts.sort!.reverse!
+      end
     end
     def find_layout(tag,type)
       layout = @config.layouts["#{type}_#{tag}"] ; return layout if layout_valid?(layout,true)
