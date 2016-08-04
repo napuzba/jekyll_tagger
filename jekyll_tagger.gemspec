@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["napuzba"]
   spec.email         = ["kobi@napuzba.com"]
   spec.summary       = %q{Jekyll plugin for generationg tag pages and feeds.}
-  spec.homepage      = "https://www.github.com/napuzba/jekyll_tagger"
+  spec.homepage      = "http://www.napuzba.com/story/generate-tags-with-jekyll-tagger/"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").grep(%r{(lib)/})

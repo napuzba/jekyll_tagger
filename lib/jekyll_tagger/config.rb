@@ -1,7 +1,34 @@
 module Jekyll_Tagger
   class Config
-    attr_accessor :include , :exclude , :indexes , :names , :slugs , :types, :style , :layouts , :folders , :page_size , :page_show , :pretty , :post_order
+    # Array of tags to include in active tags
+    attr_reader :include
+    # Array of tags to exclude in active tags
+    attr_reader :exclude
+    # Hash from tags to names
+    attr_reader :names
+    # Hash from tags to slugs
+    attr_reader :slugs
+    # Array of indexes
+    attr_reader :indexes
+    # Array of items to generate. values: 'page' , 'feed'
+    attr_reader :types
+    # The style to generate. values: 'simple', 'pertty'
+    attr_reader :style
+    # Hash from tags to layouts
+    attr_reader :layouts
+    # Hash from tags to folders
+    attr_reader :folders
+    # The number of posts per page.
+    attr_reader :page_size
+    # The number of PageInfo per page.
+    attr_reader :page_show
+    # Whether the #style is 'pertty'
+    attr_reader :pretty
+    # The order of the posts.
+    attr_reader :post_order
 
+    ##
+    # Create a new +Config+ by parsing +config+ hash
     def initialize(config)
       @config    = config
       @include   = value( 'include'   , [] )
@@ -19,6 +46,9 @@ module Jekyll_Tagger
       @pretty    = @style == 'pretty'
     end
 
+    private
+    ##
+    # Find value of +key+ if exists, otherwise return +default+
     def value(key,default)
       @config[key] || default
     end
