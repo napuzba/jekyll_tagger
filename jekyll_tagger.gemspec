@@ -22,8 +22,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
   spec.add_development_dependency "jekyll"
   spec.add_development_dependency "clash"
-
-  if RUBY_VERSION >= "2"
-    spec.add_development_dependency "pry-byebug"
-  end
 end
