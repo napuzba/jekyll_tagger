@@ -55,28 +55,12 @@ The following will allow to build a pager on page layout:
 
 The following filters can be used in layouts:
 
-----
- ```{{ tag | tag_name }}```
-
- * Display the tag name
-
-----
-  ```{{ tag | tag_slug }}```
-
- * Display the tag slug
-
-----
-```{{ tag | tag_url type: type [number: 1] }}```
-
- * Display the url of tag's item. a number can be provided for `page` item.
-
-----
-```{{ tag | tag_link_page [html_opts:'']) }}```
-
- * Display a link to tag `page` item. html_opts is string which appended to the link.
-
----
-
+|Filter| Description
+|--------|------------
+|```{{ tag \| tag_name }}``` | Display the tag name
+|```{{ tag \| tag_slug }}``` | Display the tag slug
+|```{{ tag \| tag_url type: type [number: 1] }}``` | Display the url of tag's item. a number can be provided for `page` item.
+|```{{ tag \| tag_link_page [html_opts:'']) }}``` |  Display a link to tag `page` item. html_opts is string which appended to the link.
 
 ## Configure Plugin
 
