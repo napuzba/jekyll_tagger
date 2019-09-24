@@ -1,6 +1,6 @@
 # jekyll-tagger
 
-jekyll plugin for generationg tag pages and feeds.
+jekyll plugin for generating tag pages and feeds.
 
 ![logo.png](logo.png)
 
